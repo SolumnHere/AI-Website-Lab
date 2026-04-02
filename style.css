@@ -16,10 +16,7 @@ header {
 .header-container {
     max-width: 1000px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+    text-align: center;
 }
 
 .header-container h1 {
@@ -29,22 +26,6 @@ header {
 .header-container p {
     margin: 0;
     font-size: 1.1em;
-}
-
-.language-switcher {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.language-switcher a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.language-switcher a:hover {
-    text-decoration: underline;
 }
 
 .dashboard-container {
@@ -173,49 +154,175 @@ header {
     color: #888;
 }
 
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+}
+
+/* Màu nền chính của Footer */
 footer {
-    background-color: #333;
+    background-color: #008080; /* Teal đậm */
     color: white;
     padding: 40px 20px 20px;
     margin-top: 40px;
 }
 
+/* Chia 2 cột cho Footer */
 .footer-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
-    text-align: center;
+    display: flex;
+    gap: 30px;
 }
 
-.contact-form form {
+.footer-left {
+    flex: 1;
+}
+
+.footer-right {
+    flex: 1;
+}
+
+/* Kiểu dáng chung cho các thẻ Card trong Footer */
+footer .card {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #333; /* Đảm bảo chữ bên trong card màu tối dễ đọc */
+}
+
+/* Tiêu đề có gạch chân màu Gold cá tính */
+footer .card h2 {
+    color: gold;
+    margin-top: 0;
+    border-bottom: 2px solid gold;
+    padding-bottom: 10px;
+}
+
+/* --- FIX PHẦN CONTACT ME Ở ĐÂY --- */
+
+/* Sử dụng ID #contact để đảm bảo độ ưu tiên cao nhất, đè lên style.css cũ */
+#contact form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 30px;
+    gap: 8px; /* Khoảng cách đều giữa các ô */
 }
 
-.contact-form input, .contact-form textarea {
-    padding: 10px;
+#contact label {
+    font-weight: bold;
+    color: #333;
+    margin-top: 5px;
+}
+
+#contact input, 
+#contact textarea {
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-family: inherit;
+    width: 100%;
+    /* box-sizing giúp padding không làm input bị phình to ra khỏi khung */
+    box-sizing: border-box; 
 }
 
-.contact-form button {
-    background-color: #4a90e2;
-    color: white;
-    border: none;
+/* Tùy chỉnh nút Send để nó thành màu Gold, đè lên class .btn mặc định */
+#contact button.btn {
+    background-color: gold;
+    color: #333;
+    text-align: center;
     padding: 12px;
     border-radius: 5px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-top: 15px;
+    width: 100%; /* Cho nút full chiều rộng nhìn hiện đại hơn */
+    transition: background-color 0.3s ease;
 }
 
-.contact-form button:hover {
-    background-color: #357abd;
+#contact button.btn:hover {
+    background-color: #ffd700;
 }
 
-@media (max-width: 768px) {
-    .dashboard-container {
+/* --- PHẦN PERSONALITY & SKILLS --- */
+
+.personality-card .tagline {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-list li {
+    background-color: #f0f0f0; /* Nền xám nhạt cho từng kỹ năng */
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.skill-icon {
+    margin-right: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.social-links .social-icon {
+    background-color: transparent;
+    color: gold;
+    text-align: center;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid gold;
+    transition: all 0.3s ease; /* Hiệu ứng chuyển màu mượt mà */
+}
+
+.social-links .social-icon:hover {
+    background-color: gold;
+    color: #333;
+}
+
+.view-code {
+    font-size: 0.8em;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.view-code a {
+    color: gold;
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    color: #eee;
+    margin-top: 30px;
+    font-size: 0.9em;
+}
+
+/* Cho màn hình điện thoại, 2 cột tự rớt xuống thành 1 cột */
+@media (max-width: 600px) {
+    .footer-container {
         flex-direction: column;
     }
 }
